@@ -1,29 +1,30 @@
-Feature: checkout
+# language: pt
+Funcionalidade: fazer o checkout das compras
 Como cliente da EBAC-SHOP
 Quero fazer concluir meu cadastro   
 Para finalizar minha compra
 
-  Background:
-    Given ao acessar a pagina de checkout
+  Contexto:
+    Dado ao acessar a pagina de checkout
 
-  Scenario: todos os campos com asterisco devem ser preenchidos
-    When ao não preencher pelo menos um dos campos com asterisco
-    Then não cadastrar o usuário
+  Cenario: todos os campos com asterisco devem ser preenchidos
+    Quando ao não preencher pelo menos um dos campos com asterisco
+    Então  não cadastrar o usuário
 
-  Scenario: email invalido não deve ser inserido
-    When ao digitar um email inválido
-    Then deve exibir uma mensagem de erro " email invalido"
+  Cenario: email invalido não deve ser inserido
+    Quando ao digitar um email inválido
+    Então deve exibir uma mensagem de erro " email invalido"
 
-  Scenario Outline: autenticar emails invalido
-    When ao digital um  <email> invalido
-    Then deve exibir uma <mensagem> de alerta
+  Esquema do Cenário: autenticar emails invalido
+    Quando ao digital um  <email> invalido
+    Então deve exibir uma <mensagem> de alerta
 
-    Examples:
+    Exemplos:
       | email                     | mensagem          |
       | "dfsdfsdfebac.br "        | " email invalido" |
       | "wwwfd@ebac.br "          | " email invalido" |
       | "iwantjobs@@ebac.com.br " | " email invalido" |
 
-  Scenario: cadastramento com campos vazios não deve ser validado
-    When ao tentar fazer o cadastro com campos vazios
-    Then deve exibir uma mensagem de alerta " atencao!campo vazio"
+  Cenario: cadastramento com campos vazios não deve ser validado
+    Quando ao tentar fazer o cadastro com campos vazios
+    Então deve exibir uma mensagem de alerta " atencao!campo vazio"
